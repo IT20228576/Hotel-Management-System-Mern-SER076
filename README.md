@@ -1,7 +1,7 @@
 # lab-assignment-IT20228576
 lab-assignment-IT20228576 created by GitHub Classroom
 
-## This Project is a Simple Shopping Cart Project using ReactJS and KoaJS which demonstrates the following
+## This Project is a Simple Shopping Cart Project using ReactJS and KoaJS.
 
 ### Sample Login Details
 
