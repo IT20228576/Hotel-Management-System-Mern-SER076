@@ -6,7 +6,7 @@ To run project follow these simple example steps.
 
 ### Installation
 
-### Backend side
+#### Backend side
 
 1. Go to backend folder
    ```sh
@@ -21,7 +21,7 @@ To run project follow these simple example steps.
    npm start
    ```
 
-### Frontend side
+#### Frontend side
 
 1. Go to backend folder
    ```sh
