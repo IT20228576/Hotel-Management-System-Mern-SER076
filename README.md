@@ -1,4 +1,4 @@
-## This Project is a Simple Note Management system using MERN stack.
+## This Project is a Simple Note Management System Using MERN stack.
 
 1. This project has two user roles Admin and Student.
 2. Admin can create new users in to the system by providing only email and account type(admin or student) but if admin want to add additional data he can add those data.
