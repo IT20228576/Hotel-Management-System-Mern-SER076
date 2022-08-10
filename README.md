@@ -2,9 +2,9 @@
 
 1. This project has two user roles Admin and Student.
 2. Admin can create new users in to the system by providing only email and account type(admin or student) but if admin want to add additional data he can add those data.
-3. After creating a user system send a email to user with email, temporary password and the login link.
-4. When user logged in to the system first time using that credentials system asks for register(fill user information) and create a new password.
-5. After registering system will redirect to the login page and user can logged in to the system using new password.
+3. After creating a user, system send a email to user with email, temporary password and the login link.
+4. When user logged in to the system first time using that credentials, system asks for register(fill user information) and create a new password.
+5. After registering, system will redirect to the login page and user can logged in to the system using new password.
 6. Admin can view all users in a pagination list and search using name, id, email.
 7. Admin can view specific user information in a popup.
 8. Student can create, delete, update, view notes belongs to them.
