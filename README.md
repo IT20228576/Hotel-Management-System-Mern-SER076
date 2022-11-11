@@ -1,17 +1,37 @@
-## This Project is a Simple Note Management System Using MERN stack.
+# Hotel-Management-System-SER076
 
-1. This project has two user roles Admin and Student.
-2. Admin can create new users in to the system by providing only email and account type(admin or student) but if admin want to add additional data he can add those data.
-3. After creating a user, system send a email to user with email, temporary password and the login link.
-4. When user logged in to the system first time using that credentials, system asks for register(fill user information) and create a new password.
-5. After registering, system will redirect to the login page and user can logged in to the system using new password.
-6. Admin can view all users in a pagination list and search using name, id, email.
-7. Admin can view specific user information in a popup.
-8. Student can create, delete, update, view notes belongs to them.
-9. Student can view all notes belongs to them in a pagination list and search using title.
-10. Notes has title and description.
+## Introduction to the Project
 
-## Sample Login Details
+This project is based on a hotel reservation system. It provides a platform for customers to reserve rooms directly with the hotel online easily and conveniently without having to visit the hotel physically.
+
+There are four main functionalities we identified in this system,
+   1.	User Management
+   2.	Reservation Management
+   3.	Room Management
+   4.	Event Management
+   
+These functionalities are mainly distributed between two primary roles, which are the customer and the hotel administrator.
+
+Customers can view the hotel rooms and as an additional feature, they can also view the events happening in the hotel and participate in them if needed. To reserve a room, a customer must be a registered customer in the hotel. After registering, they can log in by entering their account credentials. 
+Once a customer selects a room that he/she prefers, they can make a reservation. When reserving a room, he can even make multiple reservations as long as the dates won’t clash. After a successful reservation, the customer will receive an email with the reservation details. 
+
+The hotel administrators are capable of handling all four main functionalities of the system. They can add, update, and delete customers/admins, the information about rooms, reservations, and events. The system can also be used to generate meaningful reports for the convenience of the hotel management.
+
+## Technologies and Tools
+
+MERN Stack (MongoDB, Express, React JS, Node JS), GitHub, Azure Boards, Selenium, SonarQube
+
+## Group Details
+
+Group Leader - IT20228576 - Jayawardena C.P.U (IT20228576)
+
+Member 2     - IT20123468 - Senaweera T.I.S (ishmaSenaweera)
+
+Member 3     - IT19087252 - Weeratunga G. S (sathmini)
+
+Member 4     - IT20152864 - Perera K. A. P. M (PasinduPerera10)
+
+## Sample Admin Login Details
 
 ### Admin
 
@@ -21,32 +41,6 @@
 ## Getting Started
 
 To run project follow these simple example steps.
-
-### Start Using Docker
-
-1. Go to the root folder
-
-2. Start Docker image
-   ```sh
-   docker-compose up
-   ```
-
-3. View frontend in the browser
-
-   Defualt (http://localhost:3000) or in the terminal , a link will desplay to the frontend.
-
-
-### Add Admins Seeds to the Database
-
-1. Go to the backend folder
-   ```sh
-   cd backend
-   ```
-
-2. Run seeds.js file
-   ```sh
-   npm run seed
-   ```
 
 ### Start Without Using Docker
 
@@ -67,7 +61,7 @@ To run project follow these simple example steps.
 
 #### Frontend side
 
-1. Go to backend folder
+1. Go to frontend folder
    ```sh
    cd frontend
    ```
@@ -82,3 +76,15 @@ To run project follow these simple example steps.
 4. View frontend in the browser
 
    Defualt (http://localhost:3000) or in the terminal , a link will desplay to the frontend.
+   
+### Add Admins Seeds to the Database
+
+1. Go to the backend folder
+   ```sh
+   cd backend
+   ```
+
+2. Run seeds.js file
+   ```sh
+   npm run seed
+   ```

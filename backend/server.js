@@ -1,28 +1,68 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
+const express = require("express");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const bodyParser = require('body-parser');
+const router = require("./routes/eventManagement/event.route");
+const room = require("./routes/roomManagement/room")
+/* Loading the environment variables from the .env file. */
+dotenv.config();
 
-require('dotenv').config();
+//
+// ─── SET UP SERVER ──────────────────────────────────────────────────────────────
+//
 
+/* Creating an instance of express. */
 const app = express();
-const port = process.env.PORT || 5000;
 
-app.use(cors());
+/* Setting the port to 8000. */
+const PORT = process.env.PORT || 8000;
+
+/* Starting the server on the port 8000. */
+app.listen(PORT, () =>
+  console.log(`Successfully Server started on : ${PORT}`)
+);
+
+/* A middleware that parses the body of the request and makes it available in the req.body property. */
 app.use(express.json());
+/* Parsing the cookie and making it available in the req.cookies property. */
+app.use(cookieParser());
+/* Allowing the server to accept requests from the client. */
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
+app.use(bodyParser.json());
 
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri);
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
-})
+app.use(router);
+app.use('/api/', room);
 
-const equipmentRouter = require('./routes/equipment');
-const stockRouter = require('./routes/stock');
+//
+// ─── CONNECT TO MONGODB ─────────────────────────────────────────────────────────
+//
 
-app.use('/equipment', equipmentRouter);
-app.use('/stock', stockRouter);
+mongoose.connect(
+  process.env.DBLINK,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
+    if (err) return console.error(err);
+    console.log("Successfully Connected to MongoDB");
+  }
+);
 
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
-});
+//
+// ─── SET UP ROUTES ──────────────────────────────────────────────────────────────
+//
+
+//User management routes
+app.use("/user", require("./routes/userManagement/user.router"));
+app.use("/", require("./routes/userManagement/authentication.router"));
+
+//Reservation Management Routes
+app.use("/reservations", require("./routes/reservationManagement/reservation.route"));
