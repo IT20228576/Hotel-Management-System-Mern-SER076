@@ -27,9 +27,7 @@ const seedAdmins = [
     dob: "2015-01-01",
     mobile: "0112659753",
     country: "vn",
-    verified: true,
-    passwordHash:
-      "$2a$10$kyDfuM.pQv/lbOQlyU.4Geycmv42dnN1O7nrGQku9kxrhwGd0dV9a", //123@Testing
+    password: "123@Testing",
     userType: "Admin",
   },
   {
@@ -39,9 +37,7 @@ const seedAdmins = [
     dob: "1997-10-01",
     mobile: "0116856566",
     country: "tw",
-    verified: true,
-    passwordHash:
-      "$2a$10$kyDfuM.pQv/lbOQlyU.4Geycmv42dnN1O7nrGQku9kxrhwGd0dV9a", //123@Testing
+    password: "123@Testing",
     userType: "Admin",
   },
 ];
@@ -51,7 +47,7 @@ const seedAdmins = [
  */
 const seedDB = async () => {
   try {
-    await User.deleteMany({userType: "Admin"});
+    await User.deleteMany({ userType: "Admin" });
     await User.insertMany(seedAdmins);
     console.log("Successfully admins seeded to the database.");
   } catch (error) {
