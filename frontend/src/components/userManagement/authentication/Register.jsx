@@ -55,9 +55,10 @@ const Register = () => {
       page. */
       if (result?.status === 201) {
         setLoading(false);
-        alert("Verification Email Sent successfully");
-        /* Removing the type and status from local storage. */
+        alert("User registered successfully.");
+        /* Removing the type and user from local storage. */
         localStorage.removeItem("type");
+        localStorage.removeItem("user");
         /* Reloading the page. */
         navigate("/");
         window.location.reload();

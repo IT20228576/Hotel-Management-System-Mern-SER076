@@ -12,6 +12,8 @@ const AddUser = () => {
   const [mobile, setMobile] = useState("");
   const [tempUserType, setTempUserType] = useState("");
   const [userType, setUserType] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordVerify, setPasswordVerify] = useState("");
   const [loading, setLoading] = useState(false);
 
   const options = [
@@ -39,18 +41,16 @@ const AddUser = () => {
         dob,
         mobile,
         userType,
+        password,
+        passwordVerify,
       };
 
       /* Sending a post request to the server with the user's details. */
       const result = await axios.post(
-        "http://localhost:8000/user/create-user",
+        "http://localhost:8000/user/register",
         UserData
       );
 
-      /* This is a conditional statement that checks if the status of the response is 200. If it is,
-      then it will alert the user that the registration was successful and then it will remove the
-      type and status from local storage. It will then navigate to the login page and reload the
-      page. */
       if (result?.status === 201) {
         setLoading(false);
         alert(result?.data?.Message);
@@ -164,6 +164,32 @@ const AddUser = () => {
                     options={options}
                     value={tempUserType}
                     onChange={userTypeHandler}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row className="justify-content-md-center">
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                  />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group className="mb-3">
+                  <Form.Label>Password Verify</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Password Verify"
+                    required
+                    onChange={(e) => setPasswordVerify(e.target.value)}
+                    value={passwordVerify}
                   />
                 </Form.Group>
               </Col>

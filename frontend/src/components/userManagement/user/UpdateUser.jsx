@@ -45,7 +45,7 @@ const UpdateUser = () => {
 
       /* Sending a post request to the server with the user's details. */
       const result = await axios.put(
-        "http://localhost:8000/user/update/admin",
+        "http://localhost:8000/user/update/"+id,
         updateData
       );
 

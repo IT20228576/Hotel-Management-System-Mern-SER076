@@ -116,6 +116,29 @@ router.put("/update/:id", async (req, res) => {
   }
 });
 
+/* This is a route handler for the /changepassword route. It is used to change the password of the
+user. */
+router.put("/changepassword/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    /* Checking if the password entered by the user is correct or not. */
+    if (req.body.password !== user.password)
+      return res.status(401).json({ errorMessage: "Wrong Current Password." });
+
+    /* Checking the type of the user and updating the password of the user. */
+    await User.findByIdAndUpdate(req.params.id, {
+      password: req.body.newPassword,
+    }).exec();
+
+    /* Sending a response to the client. */
+    res.status(201).send({ Message: "Successfully password changed" });
+  } catch (err) {
+      console.error(err);
+      res.status(500).send(err);
+  }
+});
+
 /* Deleting the user account. */
 router.delete("/delete/:id", async (req, res) => {
   try {

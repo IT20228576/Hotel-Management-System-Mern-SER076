@@ -58,21 +58,6 @@ const UserModal = (props) => {
                 <h3>{user?.userType}</h3>
               </td>
             </tr>
-            <tr key={6}>
-              <td>
-                <h3>Verified</h3>
-              </td>
-              {user?.verified === true && (
-                <td>
-                  <h3>Verified</h3>
-                </td>
-              )}
-              {user?.verified === false && (
-                <td>
-                  <h3>Not Verified</h3>
-                </td>
-              )}
-            </tr>
             <tr key={7}>
               <td>
                 <h3>Created by</h3>

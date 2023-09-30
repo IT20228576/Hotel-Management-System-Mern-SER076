@@ -34,18 +34,8 @@ const Login = () => {
       if (result) {
         setLoading(false);
         localStorage.setItem("type", result?.data?.type);
-        if ( result?.data?.verified === false) {
-          /* Setting the local storage with the type and status. */
-          /* Reloading the page. */
-          alert("Please Update Your Profile");
-          navigate("/profile");
-          window.location.reload();
-        } else {
-          /* Setting the local storage with the type and status. */
-          /* Reloading the page. */
-          navigate("/");
-          window.location.reload();
-        }
+        localStorage.setItem("user", result?.data?.user);
+        window.location.reload();
       }
     } catch (err) {
       setLoading(false);
@@ -53,24 +43,6 @@ const Login = () => {
       console.error(err.response.data.errorMessage);
     }
   };
-
-  async function forgotPassword() {
-    try {
-      let email = window.prompt("Please Enter Your Email Address")
-      if (email === null) {
-        return
-      } else {
-        console.log("Please Enter Your Email Address", email);
-        const result = await axios.post("http://localhost:8000/forgot-password", {email});
-        if (result?.status === 201) {
-          alert("Check Your Email For New Password")
-        }
-      }
-    } catch (err) {
-      console.error(err);
-      alert(err.response.data.errorMessage);
-    }
-  }
 
   return (
     <div className="main">
@@ -131,12 +103,6 @@ const Login = () => {
             </Button>
           </div>
         </form>
-        <hr />
-        <div className="main-center">
-          <button className="forgot-button" onClick={forgotPassword}>
-            Forgot Password?
-          </button>
-        </div>
       </div>
     </div>
   );

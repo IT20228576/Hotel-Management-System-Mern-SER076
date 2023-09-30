@@ -11,10 +11,9 @@ function LogOut() {
    */
   async function logOut() {
     try {
-      /* Making a GET request to the logout route on the server. */
-      await axios.get("http://localhost:8000/logout");
-      /* Removing the type and status from local storage. */
+      /* Removing the type and user from local storage. */
       localStorage.removeItem("type");
+      localStorage.removeItem("user");
       /* Reloading the page. */
       navigate("/");
       window.location.reload();

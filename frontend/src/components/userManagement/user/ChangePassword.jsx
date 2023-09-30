@@ -34,7 +34,7 @@ const ChangePassword = () => {
 
       /* Sending a post request to the server with the user's details. */
       const result = await axios.put(
-        "http://localhost:8000/user/changepassword",
+        "http://localhost:8000/user/changepassword/"+localStorage.getItem("user"),
         passwordData
       );
 
@@ -45,6 +45,8 @@ const ChangePassword = () => {
       if (result?.status === 201) {
         setLoading(false);
         alert("Password changed successfully");
+        localStorage.removeItem("type");
+      localStorage.removeItem("user");
         /* Reloading the page. */
         navigate("/login");
         window.location.reload();

@@ -4,7 +4,6 @@ import Home from "../layout/Home";
 import Navbar from "../layout/Navbar";
 import Login from "../userManagement/authentication/Login";
 import Register from "../userManagement/authentication/Register";
-import Verify from "../userManagement/authentication/Verify";
 import AuthContext from "../userManagement/context/UserContext";
 import Profile from "../userManagement/user/Profile";
 import AddEvent from "../eventManagement/AddEvent";
@@ -46,7 +45,6 @@ function Router() {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/verify/:id/:token" element={<Verify />} />
             <Route exact path="/" element={<Home />} />
             {userType === null && (
               <>
@@ -56,10 +54,7 @@ function Router() {
                   path="/viewAllAvailableRoom"
                   element={<ViewAllAvailableRoom />}
                 />
-                <Route
-                  path="/roomDetailsView"
-                  element={<RoomDetailsView />}
-                />
+                <Route path="/roomDetailsView" element={<RoomDetailsView />} />
                 <Route
                   path="/roomDetailsView/:id"
                   element={<RoomDetailsView />}
@@ -128,8 +123,14 @@ function Router() {
                 <Route path="/viewRooms" element={<ViewRooms />} />
                 <Route path="/updateRoom" element={<UpdateRoom />} />
                 <Route path="/roomReport" element={<RoomReport />} />
-                <Route path="/viewAllAvailableRoom" element={<ViewAllAvailableRoom />} />
-                <Route path="/roomDetailsView/:id" element={<RoomDetailsView />} />
+                <Route
+                  path="/viewAllAvailableRoom"
+                  element={<ViewAllAvailableRoom />}
+                />
+                <Route
+                  path="/roomDetailsView/:id"
+                  element={<RoomDetailsView />}
+                />
               </>
             )}
 

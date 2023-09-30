@@ -16,7 +16,7 @@ function Profile() {
    */
   async function getData() {
     try {
-      const result = await axios.get("http://localhost:8000/user/profile");
+      const result = await axios.get("http://localhost:8000/user/profile/"+localStorage.getItem("user"));
       if (result.data.dob) {
         const dobEdited = new Date(result.data.dob)
           .toISOString()
@@ -54,10 +54,12 @@ function Profile() {
         return;
       }
 
-      const result = await axios.delete("http://localhost:8000/user/delete");
+      const result = await axios.delete("http://localhost:8000/user/delete/"+localStorage.getItem("user"));
 
       if (result?.status === 201) {
         alert("Account deleted successfully");
+        localStorage.removeItem("type");
+      localStorage.removeItem("user");
         navigate("/");
         window.location.reload();
       }
@@ -128,21 +130,6 @@ function Profile() {
                   </td>
                 </tr>
                 <tr key={6}>
-                  <td>
-                    <h3>Verified</h3>
-                  </td>
-                  {userData?.verified === true && (
-                    <td>
-                      <h3>Verified</h3>
-                    </td>
-                  )}
-                  {userData?.verified === false && (
-                    <td>
-                      <h3>Not Verified</h3>
-                    </td>
-                  )}
-                </tr>
-                <tr key={7}>
                   <td>
                     <h3>Created by</h3>
                   </td>
