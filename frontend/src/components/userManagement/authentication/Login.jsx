@@ -1,6 +1,5 @@
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import "./style.css";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
@@ -8,8 +7,6 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   /**
    * When the user clicks the submit button, prevent the default action, then send a POST request to the
