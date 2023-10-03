@@ -1,7 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const router = require("./routes/eventManagement/event.route");
@@ -26,8 +25,6 @@ app.listen(PORT, () =>
 
 /* A middleware that parses the body of the request and makes it available in the req.body property. */
 app.use(express.json());
-/* Parsing the cookie and making it available in the req.cookies property. */
-app.use(cookieParser());
 /* Allowing the server to accept requests from the client. */
 app.use(
   cors({
